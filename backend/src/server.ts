@@ -1,6 +1,7 @@
 import app from "./app.js"
+import { env } from "./config/env.js";
 
-const PORT = 5000;
+const PORT = Number(env.PORT)
 
 app.listen(PORT, ()=>{
     console.log(`Backend Running on PORT ${PORT}`)
