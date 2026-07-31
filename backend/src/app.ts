@@ -2,7 +2,9 @@ import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import healthRoutes from "./routes/health.routes.js"
+import healthRoutes from "./routes/health.routes.js";
+import {errorHandler} from "./middlewares/error.middleware.js";
+import {notFoundHandler} from "./middlewares/notFound.middleware.js"
 
 const app = express();
 
@@ -24,5 +26,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/health", healthRoutes)
+app.use(notFoundHandler);
+
+app.use(errorHandler);
 
 export default app;
